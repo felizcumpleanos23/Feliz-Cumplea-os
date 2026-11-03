@@ -1,54 +1,443 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap');
-:root{--paper:#fffaf2;--pink:#e8b5c2;--deep:#9c536b;--ink:#654653}
-*{box-sizing:border-box}
-body{margin:0;min-height:100vh;color:var(--ink);font-family:'DM Sans',sans-serif;background:radial-gradient(circle at 12% 20%,#f3d9df 0 2px,transparent 3px),linear-gradient(135deg,#f7e5e3,#fff8f0 60%,#f2dce1);background-size:36px 36px,auto}
-.album-header{text-align:center;padding:24px 16px 10px}
-.back-link{display:inline-block;color:var(--deep);text-decoration:none;margin-bottom:14px}
-.eyebrow{color:var(--deep);letter-spacing:.18em;font-size:.72rem;text-transform:uppercase}
-h1,h2,h3{font-family:'Playfair Display',serif}
-.album-header h1{font-size:clamp(2rem,5vw,3rem);margin:8px 0}
-.album-header p:last-child{color:#987984}
-.album-area{width:min(1100px,96vw);margin:10px auto 30px}
-.album-controls{display:flex;align-items:center;justify-content:center;gap:18px;margin:14px auto 18px}
-.album-controls button{border:1px solid #e4bdc8;background:#fff9f5;color:var(--deep);border-radius:999px;padding:10px 17px;cursor:pointer}
-.album-controls button:disabled{opacity:.4;cursor:not-allowed}
-#pageCounter{min-width:115px;text-align:center;color:#8e6573;font-size:.9rem}
-.book-stage{position:relative;width:min(960px,94vw);height:min(640px,67vw);min-height:440px;margin:auto;perspective:1800px}
-.book{width:100%;height:100%;margin:auto}
-.page{background:var(--paper);overflow:hidden;border:1px solid #e8d5c8}
-.page-content{height:100%;width:100%;position:relative;overflow:hidden;padding:clamp(16px,2.4vw,30px);background:radial-gradient(circle at 8% 8%,#f5dfe2 0 1px,transparent 2px),linear-gradient(135deg,#fffdf8,#fff7ee);background-size:27px 27px,auto}
-.page-content:after{content:"";position:absolute;inset:9px;border:1px solid #eedbd5;pointer-events:none}
-.cover-page .page-content,.final-page .page-content{background:linear-gradient(145deg,#fff9f1,#f9e4e6)}
-.cover-content,.final-content{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-.cover-flower{color:#d58b9f;font-size:2.4rem}
-.cover-small{letter-spacing:.2em;font-size:.7rem;color:#a76b7f;margin:15px 0 6px}
-.cover-content h2,.final-content h2{font-size:clamp(2rem,4vw,3.4rem);line-height:1.15;color:#98536d;margin:10px 0}
-.cover-subtitle{font-family:'Caveat',cursive;font-size:1.5rem}
-.cover-bouquet{font-size:2.4rem;margin:18px 0}
-.cover-note{border:1px solid #dca6b4;padding:7px 18px;border-radius:30px;color:#9b5a70;font-family:'Caveat',cursive;font-size:1.2rem}
-.scrapbook-page{background-color:#fffaf1}
-.scrapbook-page h3{position:relative;z-index:1;text-align:center;color:#9c5c70;font-size:clamp(1.1rem,2vw,1.5rem);margin:4px 0 14px}
-.photo-grid{position:relative;z-index:1;display:grid;align-items:center;justify-items:center;gap:12px 9px}
-.photo-grid.three{grid-template-columns:1fr 1fr;gap:clamp(7px,1.3vw,14px)}
-.photo-grid.three .polaroid:nth-child(3){grid-column:1/span 2;width:52%}
-.photo-grid.four{grid-template-columns:1fr 1fr;gap:clamp(7px,1.1vw,12px);margin-top:10px}
-.polaroid{width:min(100%,220px);margin:0;padding:8px 8px 28px;background:#fff;box-shadow:0 5px 13px #72515a2b;border:1px solid #eee2dd;position:relative}
-.polaroid img{width:100%;height:clamp(125px,19vw,205px);object-fit:cover;display:block;background:#f0e3df}
-.polaroid figcaption{position:absolute;bottom:6px;left:3px;right:3px;text-align:center;font-family:'Caveat',cursive;font-size:clamp(.8rem,1.4vw,1.1rem);color:#875367;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.photo-grid.four .polaroid{width:min(100%,190px);padding:6px 6px 23px}
-.photo-grid.four .polaroid img{height:clamp(105px,15vw,155px)}
-.tilt-left{transform:rotate(-3deg)}.tilt-right{transform:rotate(3deg)}
-.tape{position:absolute;z-index:2;width:80px;height:23px;background:#e9aebdba;top:52px;left:12%;transform:rotate(-12deg)}
-.tape-two{top:auto;bottom:40px;left:auto;right:10%;transform:rotate(10deg)}
-.sticker{position:absolute;z-index:2;color:#d78da2;font-size:2.2rem}
-.sticker-heart{right:12%;bottom:13%}.flower{left:8%;bottom:12%}
-.page-doodle,.hand-note{position:relative;z-index:1;text-align:center;color:#a76b7f;font-family:'Caveat',cursive;font-size:1.25rem}
-.hand-note{margin:18px 8px 0;font-size:1.2rem}
-.photo-grid.four+.hand-note{margin-top:10px;font-size:1.05rem}
-.final-content p{max-width:85%;line-height:1.8;font-family:'Caveat',cursive;font-size:1.35rem}
-.final-script{color:#a45470;font-size:1.55rem!important}
-.spiral{position:absolute;z-index:30;pointer-events:none;top:0;bottom:0;left:50%;width:34px;transform:translateX(-50%);display:flex;flex-direction:column;justify-content:space-evenly;align-items:center}
-.spiral:before{content:"";position:absolute;top:0;bottom:0;width:5px;background:linear-gradient(90deg,#8e8e8e,#f7f4e9,#888);border-radius:5px;box-shadow:0 0 4px #594d4d66}
-.spiral span{display:block;width:25px;height:13px;border:3px solid #aaa;border-bottom-color:#eee;border-radius:50%;background:transparent;box-shadow:1px 1px 2px #5556}
-.flip-hint{text-align:center;color:#9a7883;font-size:.85rem;margin:18px 0}
-@media(max-width:650px){.book-stage{height:68vw;min-height:330px}.page-content{padding:10px}.polaroid{padding:5px 5px 22px}.polaroid img{height:clamp(85px,20vw,135px)}.photo-grid.four .polaroid img{height:clamp(75px,17vw,110px)}.spiral{width:22px}.spiral span{width:17px;height:10px;border-width:2px}.album-controls{gap:7px}.album-controls button{padding:9px 11px;font-size:.82rem}.page-content:after{inset:5px}}
+
+:root {
+  --paper: #fffaf2;
+  --pink: #e8b5c2;
+  --deep: #9c536b;
+  --ink: #654653;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  background: radial-gradient(circle at 12% 20%, #f3d9df 0 2px, transparent 3px), linear-gradient(135deg, #f7e5e3, #fff8f0 60%, #f2dce1);
+  background-size: 36px 36px, auto;
+}
+
+.album-header {
+  text-align: center;
+  padding: 24px 16px 10px;
+}
+
+.back-link {
+  display: inline-block;
+  color: var(--deep);
+  text-decoration: none;
+  margin-bottom: 14px;
+}
+
+.eyebrow {
+  color: var(--deep);
+  letter-spacing: .18em;
+  font-size: .72rem;
+  text-transform: uppercase;
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+}
+
+.album-header h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin: 8px 0;
+}
+
+.album-header p:last-child {
+  color: #987984;
+}
+
+.album-area {
+  width: min(1100px, 96vw);
+  margin: 10px auto 30px;
+}
+
+.album-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin: 14px auto 18px;
+}
+
+.album-controls button {
+  border: 1px solid #e4bdc8;
+  background: #fff9f5;
+  color: var(--deep);
+  border-radius: 999px;
+  padding: 10px 17px;
+  cursor: pointer;
+}
+
+.album-controls button:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+}
+
+#pageCounter {
+  min-width: 115px;
+  text-align: center;
+  color: #8e6573;
+  font-size: .9rem;
+}
+
+.book-stage {
+  position: relative;
+  width: min(960px, 94vw);
+  height: min(640px, 67vw);
+  min-height: 440px;
+  margin: auto;
+  perspective: 1800px;
+}
+
+.book {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+}
+
+.page {
+  background: var(--paper);
+  overflow: hidden;
+  border: 1px solid #e8d5c8;
+}
+
+.page-content {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  padding: clamp(16px, 2.4vw, 30px);
+  background: radial-gradient(circle at 8% 8%, #f5dfe2 0 1px, transparent 2px), linear-gradient(135deg, #fffdf8, #fff7ee);
+  background-size: 27px 27px, auto;
+}
+
+.page-content:after {
+  content: "";
+  position: absolute;
+  inset: 9px;
+  border: 1px solid #eedbd5;
+  pointer-events: none;
+}
+
+.cover-page .page-content,
+.final-page .page-content {
+  background: linear-gradient(145deg, #fff9f1, #f9e4e6);
+}
+
+.cover-content,
+.final-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.cover-flower {
+  color: #d58b9f;
+  font-size: 2.4rem;
+}
+
+.cover-small {
+  letter-spacing: .2em;
+  font-size: .7rem;
+  color: #a76b7f;
+  margin: 15px 0 6px;
+}
+
+.cover-content h2,
+.final-content h2 {
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1.15;
+  color: #98536d;
+  margin: 10px 0;
+}
+
+.cover-subtitle {
+  font-family: 'Caveat', cursive;
+  font-size: 1.5rem;
+}
+
+.cover-bouquet {
+  font-size: 2.4rem;
+  margin: 18px 0;
+}
+
+.cover-note {
+  border: 1px solid #dca6b4;
+  padding: 7px 18px;
+  border-radius: 30px;
+  color: #9b5a70;
+  font-family: 'Caveat', cursive;
+  font-size: 1.2rem;
+}
+
+.scrapbook-page {
+  background-color: #fffaf1;
+}
+
+.scrapbook-page h3 {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: #9c5c70;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  margin: 4px 0 14px;
+}
+
+.photo-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  gap: 12px 9px;
+}
+
+.photo-grid.three {
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(7px, 1.3vw, 14px);
+}
+
+.photo-grid.three .polaroid:nth-child(3) {
+  grid-column: 1 / span 2;
+  width: 52%;
+}
+
+.photo-grid.four {
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(7px, 1.1vw, 12px);
+  margin-top: 10px;
+}
+
+/* MARCOS DE LAS FOTOGRAFÍAS */
+.polaroid {
+  width: min(100%, 220px);
+  margin: 0;
+  padding: 8px 8px 12px;
+  background: #fff;
+  box-shadow: 0 5px 13px #72515a2b;
+  border: 1px solid #eee2dd;
+  position: relative;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* IMÁGENES */
+.polaroid img {
+  width: 100%;
+  height: clamp(125px, 19vw, 205px);
+  object-fit: cover;
+  display: block;
+  background: #f0e3df;
+}
+
+/* DESCRIPCIONES COMPLETAS */
+.polaroid figcaption {
+  position: static;
+  width: 100%;
+  height: auto;
+  margin-top: 7px;
+  text-align: center;
+  font-family: 'Caveat', cursive;
+  font-size: clamp(.8rem, 1.4vw, 1.1rem);
+  color: #875367;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  overflow-wrap: break-word;
+  word-break: normal;
+  line-height: 1.2;
+}
+
+/* FOTOGRAFÍAS DE CUATRO IMÁGENES */
+.photo-grid.four .polaroid {
+  width: min(100%, 190px);
+  padding: 6px 6px 12px;
+}
+
+.photo-grid.four .polaroid img {
+  height: clamp(105px, 15vw, 155px);
+}
+
+.tilt-left {
+  transform: rotate(-3deg);
+}
+
+.tilt-right {
+  transform: rotate(3deg);
+}
+
+.tape {
+  position: absolute;
+  z-index: 2;
+  width: 80px;
+  height: 23px;
+  background: #e9aebdba;
+  top: 52px;
+  left: 12%;
+  transform: rotate(-12deg);
+}
+
+.tape-two {
+  top: auto;
+  bottom: 40px;
+  left: auto;
+  right: 10%;
+  transform: rotate(10deg);
+}
+
+.sticker {
+  position: absolute;
+  z-index: 2;
+  color: #d78da2;
+  font-size: 2.2rem;
+}
+
+.sticker-heart {
+  right: 12%;
+  bottom: 13%;
+}
+
+.flower {
+  left: 8%;
+  bottom: 12%;
+}
+
+.page-doodle,
+.hand-note {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: #a76b7f;
+  font-family: 'Caveat', cursive;
+  font-size: 1.25rem;
+}
+
+.hand-note {
+  margin: 18px 8px 0;
+  font-size: 1.2rem;
+}
+
+.photo-grid.four + .hand-note {
+  margin-top: 10px;
+  font-size: 1.05rem;
+}
+
+.final-content p {
+  max-width: 85%;
+  line-height: 1.8;
+  font-family: 'Caveat', cursive;
+  font-size: 1.35rem;
+}
+
+.final-script {
+  color: #a45470;
+  font-size: 1.55rem !important;
+}
+
+.spiral {
+  position: absolute;
+  z-index: 30;
+  pointer-events: none;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 34px;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.spiral:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background: linear-gradient(90deg, #8e8e8e, #f7f4e9, #888);
+  border-radius: 5px;
+  box-shadow: 0 0 4px #594d4d66;
+}
+
+.spiral span {
+  display: block;
+  width: 25px;
+  height: 13px;
+  border: 3px solid #aaa;
+  border-bottom-color: #eee;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: 1px 1px 2px #5556;
+}
+
+.flip-hint {
+  text-align: center;
+  color: #9a7883;
+  font-size: .85rem;
+  margin: 18px 0;
+}
+
+/* AJUSTES PARA CELULARES */
+@media (max-width: 650px) {
+
+  .book-stage {
+    height: 68vw;
+    min-height: 330px;
+  }
+
+  .page-content {
+    padding: 10px;
+  }
+
+  .polaroid {
+    padding: 5px 5px 10px;
+  }
+
+  .polaroid img {
+    height: clamp(85px, 20vw, 135px);
+  }
+
+  .polaroid figcaption {
+    font-size: .85rem;
+    line-height: 1.2;
+    margin-top: 6px;
+  }
+
+  .photo-grid.four .polaroid img {
+    height: clamp(75px, 17vw, 110px);
+  }
+
+  .spiral {
+    width: 22px;
+  }
+
+  .spiral span {
+    width: 17px;
+    height: 10px;
+    border-width: 2px;
+  }
+
+  .album-controls {
+    gap: 7px;
+  }
+
+  .album-controls button {
+    padding: 9px 11px;
+    font-size: .82rem;
+  }
+
+  .page-content:after {
+    inset: 5px;
+  }
+}
