@@ -1,0 +1,217 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Una invitación especial ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- DECORACIÓN -->
+    <div class="flores flor-1">🌷</div>
+    <div class="flores flor-2">♡</div>
+    <div class="flores flor-3">🌸</div>
+    <div class="flores flor-4">♡</div>
+    <div class="flores flor-5">🌷</div>
+
+    <main class="contenedor">
+
+        <!-- PANTALLA 1: SOBRE -->
+        <section id="inicio" class="pantalla activa">
+
+            <h1>¡Hola! ♡</h1>
+
+            <p class="subtitulo">
+                Tengo algo especial que preguntarte...
+            </p>
+
+            <div class="sobre" id="sobre">
+                <div class="tapa"></div>
+                <div class="cuerpo-sobre"></div>
+                <div class="corazon">♡</div>
+            </div>
+
+            <p class="instruccion">
+                Haz clic en el sobre para abrirlo
+            </p>
+
+        </section>
+
+
+        <!-- PANTALLA 2: CARTA -->
+        <section id="carta" class="pantalla">
+
+            <div class="papel">
+
+                <div class="decoracion">🌷 ♡ 🌷</div>
+
+                <h2>Hola ♡</h2>
+
+                <p>
+                    Tengo una pequeña propuesta para ti...
+                </p>
+
+                <p>
+                    Con motivo de tu cumpleaños, me gustaría
+                    invitarte a compartir una salida a comer,
+                    conversar y disfrutar de un momento agradable.
+                </p>
+
+                <p>
+                    Quisiera que podamos pasar un día muy especial,
+                    lleno de bonitas conversaciones, sonrisas
+                    y buenos recuerdos. 🌷
+                </p>
+
+                <p class="pregunta">
+                    ¿Qué te parece?
+                </p>
+
+                <button id="btnCalendario">
+                    Quiero saber más →
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- PANTALLA 3: CALENDARIO -->
+        <section id="calendario" class="pantalla">
+
+            <div class="papel calendario-papel">
+
+                <div class="decoracion">🌸 ♡ 🌸</div>
+
+                <h2>¡Organicemos nuestra salida!</h2>
+
+                <p class="descripcion">
+                    Elige el día de nuestra salida ♡
+                </p>
+
+                <div class="calendario-caja">
+
+                    <div class="mes-navegacion">
+
+                        <button id="mesAnterior" class="flecha">
+                            ❮
+                        </button>
+
+                        <h3 id="mesAnio"></h3>
+
+                        <button id="mesSiguiente" class="flecha">
+                            ❯
+                        </button>
+
+                    </div>
+
+                    <div class="dias-semana">
+                        <span>Dom</span>
+                        <span>Lun</span>
+                        <span>Mar</span>
+                        <span>Mié</span>
+                        <span>Jue</span>
+                        <span>Vie</span>
+                        <span>Sáb</span>
+                    </div>
+
+                    <div id="diasCalendario" class="dias-calendario"></div>
+
+                </div>
+
+
+                <!-- SELECCIÓN DE HORA -->
+                <div class="seleccion-hora">
+
+                    <label for="hora">
+                        Ahora elige la hora ♡
+                    </label>
+
+                    <input type="time" id="hora">
+
+                </div>
+
+
+                <p id="fechaSeleccionada" class="fecha-seleccionada">
+                    Selecciona un día en el calendario.
+                </p>
+
+
+                <button id="btnConfirmar">
+                    Confirmar elección ♡
+                </button>
+
+                <p id="mensajeError" class="mensaje-error"></p>
+
+
+                <!-- MENSAJE FINAL -->
+                <div id="resultado" class="resultado">
+
+                    <div class="decoracion">🌷 ♡ 🌷</div>
+
+                    <h2>¡Plan confirmado! ♡</h2>
+
+                    <p>
+                        ¡Qué bonito! Ya tenemos nuestro plan organizado.
+                    </p>
+
+                    <div class="datos-confirmados">
+
+                        <p>
+                            <strong>Fecha:</strong>
+                            <span id="fechaFinal"></span>
+                        </p>
+
+                        <p>
+                            <strong>Hora:</strong>
+                            <span id="horaFinal"></span>
+                        </p>
+
+                    </div>
+
+                    <p>
+                        Entonces, queda confirmado nuestro encuentro
+                        para el día y la hora que elegiste.
+                    </p>
+
+                    <p>
+                        Espero que podamos pasar un momento muy
+                        agradable, conversar de muchas cosas,
+                        reírnos y disfrutar de una bonita salida. 🌷
+                    </p>
+
+                    <h3>
+                        ¡Será un gusto compartir ese momento contigo! ♡
+                    </h3>
+
+                    
+                    <!-- BOTÓN DE RECUERDOS -->
+                    <a href="recuerdos.html" class="boton-recuerdos">
+                        Ver nuestros recuerdos ♡
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- MÚSICA -->
+    <button id="btnMusica" class="boton-musica">
+        ♫ Música
+    </button>
+
+    <audio id="musica" loop>
+        <source src="musica.mp3" type="audio/mpeg">
+    </audio>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

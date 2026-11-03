@@ -1,0 +1,493 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: #fff8f2;
+    font-family: Georgia, "Times New Roman", serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    padding: 30px 15px;
+    color: #704b57;
+    border: 12px solid #e99ab1;
+}
+
+.contenedor {
+    width: 100%;
+    max-width: 620px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.pantalla {
+    display: none;
+    animation: aparecer 0.8s ease;
+}
+
+.pantalla.activa {
+    display: block;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    color: #a94f70;
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+h2 {
+    color: #a94f70;
+    margin-bottom: 20px;
+    font-size: 27px;
+}
+
+.subtitulo {
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+
+
+/* DECORACIÓN FLORAL */
+
+.flores {
+    position: fixed;
+    font-size: 45px;
+    opacity: 0.8;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.flor-1 {
+    top: 4%;
+    left: 4%;
+}
+
+.flor-2 {
+    top: 12%;
+    right: 7%;
+    color: #e99ab1;
+    font-size: 65px;
+}
+
+.flor-3 {
+    top: 45%;
+    left: 5%;
+}
+
+.flor-4 {
+    bottom: 18%;
+    left: 13%;
+    color: #e99ab1;
+    font-size: 65px;
+}
+
+.flor-5 {
+    bottom: 5%;
+    right: 5%;
+}
+
+
+/* SOBRE */
+
+.sobre {
+    width: 230px;
+    height: 155px;
+    margin: 30px auto;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.sobre:hover {
+    transform: scale(1.05);
+}
+
+.cuerpo-sobre {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 120px;
+    background: #d98ba5;
+    border-radius: 5px;
+    z-index: 2;
+    clip-path: polygon(0 0, 50% 55%, 100% 0, 100% 100%, 0 100%);
+}
+
+.tapa {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100px;
+    background: #e9a8ba;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    transform-origin: top;
+    transition: transform 0.7s;
+    z-index: 3;
+}
+
+.sobre.abierto .tapa {
+    transform: rotateX(180deg);
+}
+
+.corazon {
+    position: absolute;
+    top: 45px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 38px;
+    z-index: 4;
+}
+
+.instruccion {
+    font-size: 15px;
+    color: #a05d75;
+    margin-top: 20px;
+}
+
+
+/* CARTA */
+
+.papel {
+    background: #fffaf5;
+    padding: 40px 35px;
+    border: 3px solid #e99ab1;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(130, 75, 90, 0.12);
+}
+
+.decoracion {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.papel p {
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 18px;
+}
+
+.pregunta {
+    color: #c45d80;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 20px !important;
+    margin-top: 20px;
+}
+
+
+/* BOTONES GENERALES */
+
+button {
+    background: #e99ab1;
+    color: #704b57;
+    border: none;
+    padding: 14px 27px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 15px;
+}
+
+button:hover {
+    background: #d77f9c;
+    transform: scale(1.04);
+}
+
+
+/* CALENDARIO */
+
+.calendario-papel {
+    padding: 30px 25px;
+}
+
+.descripcion {
+    color: #865568;
+    margin-bottom: 20px;
+}
+
+.calendario-caja {
+    background: #fff3f5;
+    padding: 18px;
+    border-radius: 12px;
+    border: 1px solid #edc1cd;
+}
+
+.mes-navegacion {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.mes-navegacion h3 {
+    color: #a94f70;
+    font-size: 20px;
+}
+
+.flecha {
+    padding: 7px 13px;
+    margin: 0;
+    font-size: 15px;
+}
+
+.dias-semana,
+.dias-calendario {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 7px;
+}
+
+.dias-semana span {
+    font-size: 13px;
+    font-weight: bold;
+    color: #a94f70;
+    padding-bottom: 10px;
+}
+
+.dia {
+    background: #fffaf3;
+    color: #704b57;
+    border: 1px solid #edcbd3;
+    border-radius: 8px;
+    min-width: 0;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    padding: 0;
+    margin: 0;
+}
+
+.dia:hover:not(:disabled) {
+    background: #f3c4d1;
+    color: #704b57;
+}
+
+.dia.seleccionado {
+    background: #c96f8d;
+    color: white;
+    border-color: #c96f8d;
+}
+
+.dia:disabled {
+    background: #eee8e6;
+    color: #b9aeae;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.vacio {
+    aspect-ratio: 1;
+}
+
+
+/* SELECCIÓN DE HORA */
+
+.seleccion-hora {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.seleccion-hora label {
+    color: #a94f70;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.seleccion-hora input {
+    padding: 12px;
+    border: 2px solid #e7a9b9;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 17px;
+    color: #704b57;
+    background: #fffaf3;
+}
+
+.fecha-seleccionada {
+    font-size: 15px !important;
+    color: #a94f70;
+    margin-top: 15px;
+}
+
+.mensaje-error {
+    color: #b43d54;
+    font-size: 14px !important;
+    margin-top: 10px;
+}
+
+
+/* MENSAJE FINAL */
+
+.resultado {
+    display: none;
+    margin-top: 30px;
+    padding: 25px 20px;
+    background: #fff0f3;
+    border: 2px dashed #d98ba5;
+    border-radius: 15px;
+    animation: aparecer 0.8s ease;
+}
+
+.resultado.mostrar {
+    display: block;
+}
+
+.resultado h2 {
+    font-size: 27px;
+}
+
+.resultado h3 {
+    color: #a94f70;
+    font-size: 19px;
+    line-height: 1.5;
+    margin: 20px 0 10px;
+}
+
+.resultado p {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 12px;
+}
+
+.datos-confirmados {
+    background: #fffaf3;
+    padding: 12px;
+    border-radius: 10px;
+    margin: 15px 0;
+    border: 1px solid #edc1cd;
+}
+
+.datos-confirmados p {
+    margin: 5px 0;
+}
+
+
+/* BOTÓN WHATSAPP */
+
+#btnWhatsApp {
+    background: #c96f8d;
+    margin-top: 15px;
+}
+
+
+/* BOTÓN DE RECUERDOS */
+
+.boton-recuerdos {
+    display: inline-block;
+    background: #fffaf5;
+    color: #a94f70;
+    border: 2px solid #e99ab1;
+    padding: 13px 25px;
+    border-radius: 30px;
+    font-size: 16px;
+    text-decoration: none;
+    margin-top: 15px;
+    transition: 0.3s;
+}
+
+.boton-recuerdos:hover {
+    background: #f8dce5;
+    transform: scale(1.04);
+}
+
+
+/* MÚSICA */
+
+.boton-musica {
+    position: fixed;
+    top: 15px;
+    right: 18px;
+    z-index: 5;
+    padding: 10px 18px;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 480px) {
+
+    body {
+        padding: 25px 12px;
+        border-width: 7px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    h2 {
+        font-size: 23px;
+    }
+
+    .papel {
+        padding: 25px 16px;
+    }
+
+    .papel p {
+        font-size: 15px;
+    }
+
+    .calendario-caja {
+        padding: 12px 7px;
+    }
+
+    .dias-semana,
+    .dias-calendario {
+        gap: 4px;
+    }
+
+    .dia {
+        font-size: 13px;
+        border-radius: 6px;
+    }
+
+    .flores {
+        font-size: 30px;
+    }
+
+    .flor-2,
+    .flor-4 {
+        font-size: 42px;
+    }
+
+    .resultado {
+        padding: 20px 13px;
+    }
+
+    .resultado h2 {
+        font-size: 23px;
+    }
+
+    .boton-musica {
+        top: 8px;
+        right: 8px;
+        font-size: 13px;
+        padding: 8px 13px;
+    }
+}

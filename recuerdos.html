@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuestros recuerdos ♡</title>
+  <link rel="stylesheet" href="recuerdos.css">
+</head>
+<body>
+  <header class="album-header">
+    <a class="back-link" href="index.html">← Volver a la invitación</a>
+    <p class="eyebrow">Un pequeño álbum hecho con cariño</p>
+    <h1>Nuestros recuerdos ♡</h1>
+    <p>Pequeños momentos, grandes historias.</p>
+  </header>
+
+  <main class="album-area">
+    <div class="album-controls">
+      <button id="previousPage" type="button" aria-label="Página anterior">← Anterior</button>
+      <span id="pageCounter">Portada</span>
+      <button id="nextPage" type="button">Siguiente →</button>
+    </div>
+    <div class="book-stage">
+      <div id="book" class="book">
+        <div class="page cover-page">
+          <div class="page-content cover-content">
+            <span class="cover-flower">✿</span>
+            <p class="cover-small">UN ÁLBUM ESPECIAL</p>
+            <h2>Nuestros<br>recuerdos</h2>
+            <p class="cover-subtitle">Pequeños momentos,<br>grandes historias...</p>
+            <div class="cover-bouquet">🌷 ♡ 🌷</div>
+            <span class="cover-note">Hecho con cariño</span>
+          </div>
+        </div>
+
+        <div class="page">
+          <div class="page-content scrapbook-page">
+            <h3>Momentos que guardo ♡</h3>
+            <div class="photo-grid three">
+              <figure class="polaroid tilt-left"><img src="imagenes/recuerdo1.jpeg" alt="Recuerdo 1"><figcaption>Un recuerdo bonito ♡</figcaption></figure>
+              <figure class="polaroid tilt-right"><img src="imagenes/recuerdo2.jpeg" alt="Recuerdo 2"><figcaption>Sonrisas que quedan</figcaption></figure>
+              <figure class="polaroid tilt-left"><img src="imagenes/recuerdo3.jpeg" alt="Recuerdo 3"><figcaption>Un día especial</figcaption></figure>
+            </div>
+            <span class="sticker sticker-heart">♡</span><span class="tape tape-one"></span>
+            <p class="page-doodle">XOXO ✿</p>
+          </div>
+        </div>
+        <div class="page">
+          <div class="page-content scrapbook-page">
+            <h3>De esos días felices</h3>
+            <div class="photo-grid three">
+              <figure class="polaroid tilt-right"><img src="imagenes/recuerdo4.jpeg" alt="Recuerdo 4"><figcaption>Qué bonito momento</figcaption></figure>
+              <figure class="polaroid tilt-left"><img src="imagenes/recuerdo5.jpeg" alt="Recuerdo 5"><figcaption>Para recordar ♡</figcaption></figure>
+              <figure class="polaroid tilt-right"><img src="imagenes/recuerdo6.jpeg" alt="Recuerdo 6"><figcaption>Una sonrisa más</figcaption></figure>
+            </div>
+            <p class="hand-note">Hay momentos sencillos que se vuelven especiales.</p>
+            <span class="sticker flower">✿</span><span class="tape tape-two"></span>
+          </div>
+        </div>
+        <div class="page">
+          <div class="page-content scrapbook-page">
+            <h3>Pequeñas aventuras ♡</h3>
+            <div class="photo-grid three">
+              <figure class="polaroid tilt-left"><img src="imagenes/recuerdo7.jpeg" alt="Recuerdo 7"><figcaption>Un momento nuestro</figcaption></figure>
+              <figure class="polaroid tilt-right"><img src="imagenes/recuerdo8.jpeg" alt="Recuerdo 8"><figcaption>De esos que alegran</figcaption></figure>
+              <figure class="polaroid tilt-left"><img src="imagenes/recuerdo9.jpeg" alt="Recuerdo 9"><figcaption>Para guardar</figcaption></figure>
+            </div>
+            <span class="sticker sticker-heart">♡</span>
+            <p class="page-doodle">LOVE THESE DAYS</p>
+          </div>
+        </div>
+        <div class="page">
+          <div class="page-content scrapbook-page">
+            <h3>Recuerdos favoritos</h3>
+            <div class="photo-grid four">
+              <figure class="polaroid tilt-left"><img src="imagenes/recuerdo10.jpeg" alt="Recuerdo 10"><figcaption>Qué suerte coincidir</figcaption></figure>
+              <figure class="polaroid tilt-right"><img src="imagenes/recuerdo11.jpeg" alt="Recuerdo 11"><figcaption>Un día para guardar</figcaption></figure>
+              <figure class="polaroid tilt-right"><img src="imagenes/recuerdo12.jpeg" alt="Recuerdo 12"><figcaption>Gracias por este momento</figcaption></figure>
+              <figure class="polaroid tilt-left"><img src="imagenes/recuerdo13.jpeg" alt="Recuerdo 13"><figcaption>Otro recuerdo especial ♡</figcaption></figure>
+            </div>
+            <p class="hand-note">Lo mejor de los recuerdos es que siempre podemos crear nuevos.</p>
+            <span class="sticker flower">✿</span>
+          </div>
+        </div>
+        <div class="page final-page">
+          <div class="page-content final-content">
+            <span class="cover-flower">✿</span>
+            <h2>¡Feliz cumpleaños! ♡</h2>
+            <p>Gracias por tu amistad, por las sonrisas y por cada momento compartido.</p>
+            <p>Que este nuevo año esté lleno de cosas bonitas, alegrías y muchos motivos para sonreír.</p>
+            <div class="cover-bouquet">🌷 ♡ 🌷</div>
+            <p class="final-script">Que vengan muchos recuerdos más...</p>
+            <span class="cover-note">Con cariño ♡</span>
+          </div>
+        </div>
+      </div>
+      <div class="spiral" aria-hidden="true"></div>
+    </div>
+    <p class="flip-hint">También puedes pasar las hojas arrastrando una esquina del cuaderno.</p>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js"></script>
+  <script src="recuerdos.js"></script>
+</body>
+</html>
