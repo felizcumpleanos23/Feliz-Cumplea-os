@@ -17,7 +17,9 @@ body {
   min-height: 100vh;
   color: var(--ink);
   font-family: 'DM Sans', sans-serif;
-  background: radial-gradient(circle at 12% 20%, #f3d9df 0 2px, transparent 3px), linear-gradient(135deg, #f7e5e3, #fff8f0 60%, #f2dce1);
+  background:
+    radial-gradient(circle at 12% 20%, #f3d9df 0 2px, transparent 3px),
+    linear-gradient(135deg, #f7e5e3, #fff8f0 60%, #f2dce1);
   background-size: 36px 36px, auto;
 }
 
@@ -53,8 +55,10 @@ h1, h2, h3 {
   color: #987984;
 }
 
+/* ÁREA GENERAL DEL ÁLBUM */
+
 .album-area {
-  width: min(1100px, 96vw);
+  width: min(1300px, 98vw);
   margin: 10px auto 30px;
 }
 
@@ -87,11 +91,13 @@ h1, h2, h3 {
   font-size: .9rem;
 }
 
+/* TAMAÑO DEL CUADERNO */
+
 .book-stage {
   position: relative;
-  width: min(960px, 94vw);
-  height: min(640px, 67vw);
-  min-height: 440px;
+  width: min(1200px, 96vw);
+  height: min(720px, 75vw);
+  min-height: 520px;
   margin: auto;
   perspective: 1800px;
 }
@@ -114,7 +120,9 @@ h1, h2, h3 {
   position: relative;
   overflow: hidden;
   padding: clamp(16px, 2.4vw, 30px);
-  background: radial-gradient(circle at 8% 8%, #f5dfe2 0 1px, transparent 2px), linear-gradient(135deg, #fffdf8, #fff7ee);
+  background:
+    radial-gradient(circle at 8% 8%, #f5dfe2 0 1px, transparent 2px),
+    linear-gradient(135deg, #fffdf8, #fff7ee);
   background-size: 27px 27px, auto;
 }
 
@@ -179,6 +187,8 @@ h1, h2, h3 {
   font-size: 1.2rem;
 }
 
+/* DISEÑO DE LAS PÁGINAS */
+
 .scrapbook-page {
   background-color: #fffaf1;
 }
@@ -217,56 +227,56 @@ h1, h2, h3 {
   margin-top: 10px;
 }
 
-/* MARCOS DE LAS FOTOGRAFÍAS */
+/* MARCOS BLANCOS MÁS GRANDES */
+
 .polaroid {
-  width: min(100%, 220px);
+  width: min(100%, 260px);
   margin: 0;
-  padding: 8px 8px 12px;
+  padding: 9px 9px 42px;
   background: #fff;
   box-shadow: 0 5px 13px #72515a2b;
   border: 1px solid #eee2dd;
   position: relative;
-  height: auto;
-  display: flex;
-  flex-direction: column;
 }
 
-/* IMÁGENES */
 .polaroid img {
   width: 100%;
-  height: clamp(125px, 19vw, 205px);
+  height: clamp(150px, 20vw, 230px);
   object-fit: cover;
   display: block;
   background: #f0e3df;
 }
 
 /* DESCRIPCIONES COMPLETAS */
+
 .polaroid figcaption {
-  position: static;
-  width: 100%;
-  height: auto;
-  margin-top: 7px;
+  position: absolute;
+  bottom: 7px;
+  left: 5px;
+  right: 5px;
   text-align: center;
   font-family: 'Caveat', cursive;
-  font-size: clamp(.8rem, 1.4vw, 1.1rem);
+  font-size: clamp(.85rem, 1.4vw, 1.15rem);
+  line-height: 1.05;
   color: #875367;
   white-space: normal;
   overflow: visible;
   text-overflow: clip;
   overflow-wrap: break-word;
-  word-break: normal;
-  line-height: 1.2;
 }
 
-/* FOTOGRAFÍAS DE CUATRO IMÁGENES */
+/* CUATRO FOTOGRAFÍAS */
+
 .photo-grid.four .polaroid {
-  width: min(100%, 190px);
-  padding: 6px 6px 12px;
+  width: min(100%, 220px);
+  padding: 7px 7px 36px;
 }
 
 .photo-grid.four .polaroid img {
-  height: clamp(105px, 15vw, 155px);
+  height: clamp(125px, 16vw, 175px);
 }
+
+/* INCLINACIÓN DE LAS FOTOGRAFÍAS */
 
 .tilt-left {
   transform: rotate(-3deg);
@@ -275,6 +285,8 @@ h1, h2, h3 {
 .tilt-right {
   transform: rotate(3deg);
 }
+
+/* DECORACIONES */
 
 .tape {
   position: absolute;
@@ -332,6 +344,8 @@ h1, h2, h3 {
   font-size: 1.05rem;
 }
 
+/* PÁGINA FINAL */
+
 .final-content p {
   max-width: 85%;
   line-height: 1.8;
@@ -343,6 +357,8 @@ h1, h2, h3 {
   color: #a45470;
   font-size: 1.55rem !important;
 }
+
+/* ESPIRAL DEL CUADERNO */
 
 .spiral {
   position: absolute;
@@ -388,10 +404,12 @@ h1, h2, h3 {
   margin: 18px 0;
 }
 
-/* AJUSTES PARA CELULARES */
+/* ADAPTACIÓN PARA CELULARES */
+
 @media (max-width: 650px) {
 
   .book-stage {
+    width: 96vw;
     height: 68vw;
     min-height: 330px;
   }
@@ -401,7 +419,7 @@ h1, h2, h3 {
   }
 
   .polaroid {
-    padding: 5px 5px 10px;
+    padding: 5px 5px 30px;
   }
 
   .polaroid img {
@@ -409,9 +427,12 @@ h1, h2, h3 {
   }
 
   .polaroid figcaption {
-    font-size: .85rem;
-    line-height: 1.2;
-    margin-top: 6px;
+    font-size: clamp(.65rem, 2.2vw, .85rem);
+    line-height: 1;
+  }
+
+  .photo-grid.four .polaroid {
+    padding: 5px 5px 27px;
   }
 
   .photo-grid.four .polaroid img {
