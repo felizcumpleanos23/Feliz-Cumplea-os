@@ -187,7 +187,7 @@ h1, h2, h3 {
   font-size: 1.2rem;
 }
 
-/* DISEÑO DE LAS PÁGINAS */
+/* PÁGINAS DEL ÁLBUM */
 
 .scrapbook-page {
   background-color: #fffaf1;
@@ -227,12 +227,12 @@ h1, h2, h3 {
   margin-top: 10px;
 }
 
-/* MARCOS BLANCOS MÁS GRANDES */
+/* MARCOS BLANCOS TIPO POLAROID */
 
 .polaroid {
   width: min(100%, 260px);
   margin: 0;
-  padding: 9px 9px 42px;
+  padding: 9px;
   background: #fff;
   box-shadow: 0 5px 13px #72515a2b;
   border: 1px solid #eee2dd;
@@ -247,17 +247,18 @@ h1, h2, h3 {
   background: #f0e3df;
 }
 
-/* DESCRIPCIONES COMPLETAS */
+/* DESCRIPCIONES DEBAJO DE LAS FOTOGRAFÍAS */
 
 .polaroid figcaption {
-  position: absolute;
-  bottom: 7px;
-  left: 5px;
-  right: 5px;
+  position: static;
+  display: block;
+  width: 100%;
+  min-height: 2.4em;
+  margin-top: 8px;
   text-align: center;
   font-family: 'Caveat', cursive;
   font-size: clamp(.85rem, 1.4vw, 1.15rem);
-  line-height: 1.05;
+  line-height: 1.1;
   color: #875367;
   white-space: normal;
   overflow: visible;
@@ -265,11 +266,11 @@ h1, h2, h3 {
   overflow-wrap: break-word;
 }
 
-/* CUATRO FOTOGRAFÍAS */
+/* PÁGINAS CON CUATRO FOTOGRAFÍAS */
 
 .photo-grid.four .polaroid {
   width: min(100%, 220px);
-  padding: 7px 7px 36px;
+  padding: 7px;
 }
 
 .photo-grid.four .polaroid img {
@@ -397,6 +398,8 @@ h1, h2, h3 {
   box-shadow: 1px 1px 2px #5556;
 }
 
+/* INDICACIÓN PARA PASAR LAS HOJAS */
+
 .flip-hint {
   text-align: center;
   color: #9a7883;
@@ -419,7 +422,7 @@ h1, h2, h3 {
   }
 
   .polaroid {
-    padding: 5px 5px 30px;
+    padding: 5px;
   }
 
   .polaroid img {
@@ -428,11 +431,13 @@ h1, h2, h3 {
 
   .polaroid figcaption {
     font-size: clamp(.65rem, 2.2vw, .85rem);
-    line-height: 1;
+    line-height: 1.1;
+    min-height: 2.4em;
+    margin-top: 5px;
   }
 
   .photo-grid.four .polaroid {
-    padding: 5px 5px 27px;
+    padding: 5px;
   }
 
   .photo-grid.four .polaroid img {
