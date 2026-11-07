@@ -1,3 +1,4 @@
+
 // ========================================
 // ELEMENTOS
 // ========================================
@@ -26,6 +27,10 @@ const resultado = document.getElementById("resultado");
 const fechaFinal = document.getElementById("fechaFinal");
 const horaFinal = document.getElementById("horaFinal");
 
+const musica = document.getElementById("musica");
+const btnMusica = document.getElementById("btnMusica");
+
+console.log("El archivo script.js se ha cargado correctamente");
 
 // ========================================
 // VARIABLES DEL CALENDARIO
@@ -53,7 +58,6 @@ function cambiarPantalla(pantalla) {
         top: 0,
         behavior: "smooth"
     });
-
 }
 
 
@@ -253,6 +257,8 @@ mesSiguiente.addEventListener("click", () => {
 
 btnConfirmar.addEventListener("click", async () => {
 
+    console.log("Se hizo clic en Confirmar elección");
+
     const horaElegida = horaInput.value;
 
 
@@ -335,55 +341,67 @@ btnConfirmar.addEventListener("click", async () => {
     // EVITAR ENVÍOS REPETIDOS
 
     btnConfirmar.disabled = true;
-
-    btnConfirmar.textContent = "Confirmando... ♡";
+    btnConfirmar.textContent = "Enviando... ♡";
 
     mensajeError.textContent =
-        "Enviando confirmación... ♡";
+        "Estamos enviando tu elección. Un momento, por favor. ♡";
 
 
     try {
 
-        // ENVIAR INFORMACIÓN A FORMSUBMIT
+        // DATOS QUE SE ENVIARÁN A FORMSUBMIT
+
+        const datosFormulario = new FormData();
+
+        datosFormulario.append(
+            "nombre",
+            "Confirmación de nuestra salida"
+        );
+
+        datosFormulario.append("fecha", fechaBonita);
+
+        datosFormulario.append("hora", horaBonita);
+
+        datosFormulario.append(
+            "mensaje",
+            "Se ha confirmado una nueva salida. ♡"
+        );
+
+        datosFormulario.append(
+            "_subject",
+            "🌷 Nueva confirmación de nuestra salida"
+        );
+
+        datosFormulario.append("_template", "table");
+
+
+        // ENVIAR CORREO
 
         const respuesta = await fetch(
             "https://formsubmit.co/ajax/kevinmoriel67@outlook.com",
             {
                 method: "POST",
-
                 headers: {
-                    "Content-Type": "application/json",
                     "Accept": "application/json"
                 },
-
-                body: JSON.stringify({
-
-                    nombre: "Confirmación de nuestra salida",
-
-                    fecha: fechaBonita,
-
-                    hora: horaBonita,
-
-                    mensaje: "Se ha confirmado una nueva salida. ♡",
-
-                    _subject: "🌷 Nueva confirmación de nuestra salida",
-
-                    _template: "table"
-
-                })
+                body: datosFormulario
             }
         );
 
 
+        // LEER RESPUESTA
+
         const datos = await respuesta.json();
 
+        console.log("Respuesta de FormSubmit:", datos);
 
-        // COMPROBAR RESPUESTA
 
-        if (!respuesta.ok || String(datos.success) !== "true") {
+        // COMPROBAR SI EL ENVÍO FUE EXITOSO
+
+        if (!respuesta.ok || datos.success !== "true") {
 
             throw new Error(
-                datos.message || "No se pudo enviar el correo."
+                datos.message || "FormSubmit no pudo enviar el correo."
             );
 
         }
@@ -392,7 +410,6 @@ btnConfirmar.addEventListener("click", async () => {
         // MOSTRAR FECHA Y HORA CONFIRMADAS
 
         fechaFinal.textContent = fechaBonita;
-
         horaFinal.textContent = horaBonita;
 
 
@@ -412,6 +429,7 @@ btnConfirmar.addEventListener("click", async () => {
             block: "center"
         });
 
+        console.log("Confirmación enviada correctamente.");
 
     } catch (error) {
 
@@ -421,7 +439,7 @@ btnConfirmar.addEventListener("click", async () => {
         );
 
         mensajeError.textContent =
-            "No se pudo enviar la confirmación. Inténtalo nuevamente. ♡";
+            "No se pudo enviar la confirmación. Revisa tu conexión o inténtalo nuevamente. ♡";
 
         btnConfirmar.disabled = false;
 
@@ -436,10 +454,6 @@ btnConfirmar.addEventListener("click", async () => {
 // ========================================
 // CONTROL DE MÚSICA
 // ========================================
-
-const musica = document.getElementById("musica");
-
-const btnMusica = document.getElementById("btnMusica");
 
 if (musica && btnMusica) {
 
