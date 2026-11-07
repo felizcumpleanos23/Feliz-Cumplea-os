@@ -12,9 +12,16 @@
   box-sizing: border-box;
 }
 
+html {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
   color: var(--ink);
   font-family: 'DM Sans', sans-serif;
   background:
@@ -77,6 +84,7 @@ h1, h2, h3 {
   border-radius: 999px;
   padding: 10px 17px;
   cursor: pointer;
+  font-family: inherit;
 }
 
 .album-controls button:disabled {
@@ -91,7 +99,7 @@ h1, h2, h3 {
   font-size: .9rem;
 }
 
-/* TAMAÑO DEL CUADERNO */
+/* TAMAÑO DEL CUADERNO EN COMPUTADORA */
 
 .book-stage {
   position: relative;
@@ -231,6 +239,7 @@ h1, h2, h3 {
 
 .polaroid {
   width: min(100%, 260px);
+  height: auto;
   margin: 0;
   padding: 9px;
   background: #fff;
@@ -247,13 +256,15 @@ h1, h2, h3 {
   background: #f0e3df;
 }
 
-/* DESCRIPCIONES DEBAJO DE LAS FOTOGRAFÍAS */
+/* DESCRIPCIONES */
 
 .polaroid figcaption {
   position: static;
   display: block;
   width: 100%;
   min-height: 2.4em;
+  height: auto;
+  max-height: none;
   margin-top: 8px;
   text-align: center;
   font-family: 'Caveat', cursive;
@@ -264,6 +275,7 @@ h1, h2, h3 {
   overflow: visible;
   text-overflow: clip;
   overflow-wrap: break-word;
+  word-break: normal;
 }
 
 /* PÁGINAS CON CUATRO FOTOGRAFÍAS */
@@ -277,7 +289,7 @@ h1, h2, h3 {
   height: clamp(125px, 16vw, 175px);
 }
 
-/* INCLINACIÓN DE LAS FOTOGRAFÍAS */
+/* INCLINACIÓN */
 
 .tilt-left {
   transform: rotate(-3deg);
@@ -324,6 +336,8 @@ h1, h2, h3 {
   left: 8%;
   bottom: 12%;
 }
+
+/* NOTAS */
 
 .page-doodle,
 .hand-note {
@@ -404,66 +418,241 @@ h1, h2, h3 {
   text-align: center;
   color: #9a7883;
   font-size: .85rem;
-  margin: 18px 0;
+  margin: 18px 12px;
 }
 
-/* ADAPTACIÓN PARA CELULARES */
+/* ========================================
+   ADAPTACIÓN PARA CELULARES
+======================================== */
 
 @media (max-width: 650px) {
 
-  .book-stage {
-    width: 96vw;
-    height: 68vw;
-    min-height: 330px;
+  body {
+    min-height: 100svh;
   }
 
-  .page-content {
-    padding: 10px;
+  .album-header {
+    padding: 18px 12px 8px;
   }
 
-  .polaroid {
-    padding: 5px;
+  .back-link {
+    font-size: .9rem;
+    margin-bottom: 10px;
   }
 
-  .polaroid img {
-    height: clamp(85px, 20vw, 135px);
+  .eyebrow {
+    font-size: .62rem;
   }
 
-  .polaroid figcaption {
-    font-size: clamp(.65rem, 2.2vw, .85rem);
-    line-height: 1.1;
-    min-height: 2.4em;
-    margin-top: 5px;
+  .album-header h1 {
+    font-size: clamp(1.8rem, 8vw, 2.4rem);
   }
 
-  .photo-grid.four .polaroid {
-    padding: 5px;
+  .album-header p:last-child {
+    font-size: .85rem;
+    margin-top: 6px;
   }
 
-  .photo-grid.four .polaroid img {
-    height: clamp(75px, 17vw, 110px);
-  }
-
-  .spiral {
-    width: 22px;
-  }
-
-  .spiral span {
-    width: 17px;
-    height: 10px;
-    border-width: 2px;
+  .album-area {
+    width: 100%;
+    margin: 8px auto 20px;
   }
 
   .album-controls {
     gap: 7px;
+    margin: 12px auto 15px;
   }
 
   .album-controls button {
-    padding: 9px 11px;
-    font-size: .82rem;
+    padding: 9px 12px;
+    font-size: .78rem;
+  }
+
+  #pageCounter {
+    min-width: 95px;
+    font-size: .78rem;
+  }
+
+  /* LIBRO VERTICAL PARA CELULAR */
+
+  .book-stage {
+    width: 94vw;
+    height: min(125vw, 620px);
+    min-height: 400px;
+    max-height: 75svh;
+    margin: auto;
+    perspective: 1400px;
+    touch-action: pan-y;
+  }
+
+  .book {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* OCULTAR ESPIRAL CENTRAL EN MODO VERTICAL */
+
+  .spiral {
+    display: none;
+  }
+
+  .page-content {
+    padding: 12px;
   }
 
   .page-content:after {
-    inset: 5px;
+    inset: 6px;
   }
+
+  .scrapbook-page h3 {
+    font-size: clamp(1.05rem, 4.5vw, 1.35rem);
+    margin: 5px 0 12px;
+  }
+
+  /* FOTOGRAFÍAS */
+
+  .photo-grid.three {
+    gap: 10px 7px;
+  }
+
+  .photo-grid.four {
+    gap: 9px 7px;
+    margin-top: 8px;
+  }
+
+  .polaroid {
+    padding: 6px;
+    width: 100%;
+  }
+
+  .polaroid img {
+    height: clamp(95px, 25vw, 145px);
+  }
+
+  .polaroid figcaption {
+    font-size: clamp(.78rem, 3.3vw, .95rem);
+    line-height: 1.15;
+    min-height: 2.4em;
+    margin-top: 5px;
+    overflow-wrap: anywhere;
+  }
+
+  .photo-grid.three .polaroid:nth-child(3) {
+    width: 58%;
+  }
+
+  /* CUATRO FOTOGRAFÍAS */
+
+  .photo-grid.four .polaroid {
+    width: 100%;
+    padding: 5px;
+  }
+
+  .photo-grid.four .polaroid img {
+    height: clamp(80px, 21vw, 120px);
+  }
+
+  .photo-grid.four .polaroid figcaption {
+    font-size: clamp(.72rem, 3vw, .86rem);
+  }
+
+  /* NOTAS Y DECORACIONES */
+
+  .hand-note {
+    font-size: 1rem;
+    line-height: 1.2;
+    margin: 12px 5px 0;
+  }
+
+  .photo-grid.four + .hand-note {
+    font-size: .9rem;
+    margin-top: 8px;
+  }
+
+  .page-doodle {
+    font-size: 1rem;
+  }
+
+  .sticker {
+    font-size: 1.6rem;
+  }
+
+  .tape {
+    width: 55px;
+    height: 17px;
+    top: 43px;
+  }
+
+  .cover-content h2,
+  .final-content h2 {
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
+  }
+
+  .cover-subtitle {
+    font-size: 1.25rem;
+  }
+
+  .cover-bouquet {
+    font-size: 2rem;
+    margin: 12px 0;
+  }
+
+  .cover-note {
+    font-size: 1.05rem;
+  }
+
+  .final-content p {
+    max-width: 90%;
+    font-size: 1.15rem;
+    line-height: 1.5;
+  }
+
+  .final-script {
+    font-size: 1.3rem !important;
+  }
+
+  .flip-hint {
+    font-size: .75rem;
+    line-height: 1.4;
+    margin: 14px 18px;
+  }
+}
+
+/* ========================================
+   CELULARES MUY PEQUEÑOS
+======================================== */
+
+@media (max-width: 360px) {
+
+  .book-stage {
+    width: 94vw;
+    height: 125vw;
+    min-height: 380px;
+  }
+
+  .album-controls button {
+    padding: 8px 9px;
+    font-size: .72rem;
+  }
+
+  .polaroid {
+    padding: 4px;
+  }
+
+  .polaroid img {
+    height: 90px;
+  }
+
+  .photo-grid.four .polaroid img {
+    height: 76px;
+  }
+
+  .polaroid figcaption {
+    font-size: .72rem;
+  }
+
+  .photo-grid.four .polaroid figcaption {
+    font-size: .68rem;
+  }
+
 }
