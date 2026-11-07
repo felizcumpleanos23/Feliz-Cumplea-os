@@ -660,3 +660,27 @@ h1, h2, h3 {
     font-size: .68rem;
   }
 }
+
+/* CORRECCIÓN DE FOTOGRAFÍAS EN CELULARES */
+
+@media (max-width: 650px) {
+
+  .polaroid img {
+    width: 94%;
+    height: clamp(125px, 32vw, 180px);
+    margin: 0 auto;
+    object-fit: contain;
+    object-position: center;
+    background: #f7eee9;
+  }
+
+  .photo-grid.four .polaroid img {
+    width: 94%;
+    height: clamp(105px, 27vw, 145px);
+    margin: 0 auto;
+    object-fit: contain;
+    object-position: center;
+    background: #f7eee9;
+  }
+
+}
