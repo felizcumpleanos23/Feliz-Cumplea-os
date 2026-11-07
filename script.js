@@ -1,7 +1,7 @@
-
-
-
+// ========================================
 // ELEMENTOS
+// ========================================
+
 const sobre = document.getElementById("sobre");
 
 const inicio = document.getElementById("inicio");
@@ -27,15 +27,20 @@ const fechaFinal = document.getElementById("fechaFinal");
 const horaFinal = document.getElementById("horaFinal");
 
 
-
+// ========================================
 // VARIABLES DEL CALENDARIO
+// ========================================
+
 let mesActual = new Date().getMonth();
 let anioActual = new Date().getFullYear();
 
 let fechaElegida = null;
 
 
+// ========================================
 // CAMBIAR DE PANTALLA
+// ========================================
+
 function cambiarPantalla(pantalla) {
 
     inicio.classList.remove("activa");
@@ -52,7 +57,10 @@ function cambiarPantalla(pantalla) {
 }
 
 
+// ========================================
 // ABRIR SOBRE
+// ========================================
+
 sobre.addEventListener("click", () => {
 
     sobre.classList.add("abierto");
@@ -64,7 +72,10 @@ sobre.addEventListener("click", () => {
 });
 
 
+// ========================================
 // IR AL CALENDARIO
+// ========================================
+
 btnCalendario.addEventListener("click", () => {
 
     cambiarPantalla(calendario);
@@ -73,7 +84,10 @@ btnCalendario.addEventListener("click", () => {
 });
 
 
+// ========================================
 // GENERAR CALENDARIO
+// ========================================
+
 function generarCalendario() {
 
     diasCalendario.innerHTML = "";
@@ -95,6 +109,7 @@ function generarCalendario() {
 
 
     // ESPACIOS ANTES DEL PRIMER DÍA
+
     for (let i = 0; i < primerDia; i++) {
 
         const espacio = document.createElement("div");
@@ -107,6 +122,7 @@ function generarCalendario() {
 
 
     // CREAR DÍAS DEL MES
+
     for (let dia = 1; dia <= ultimoDia; dia++) {
 
         const botonDia = document.createElement("button");
@@ -136,6 +152,7 @@ function generarCalendario() {
 
 
         // DESHABILITAR FECHAS PASADAS
+
         if (fechaComparacion < hoyComparacion) {
 
             botonDia.disabled = true;
@@ -144,6 +161,7 @@ function generarCalendario() {
 
 
         // MARCAR FECHA SELECCIONADA
+
         if (
             fechaElegida &&
             fechaElegida.getDate() === dia &&
@@ -157,6 +175,7 @@ function generarCalendario() {
 
 
         // SELECCIONAR DÍA
+
         botonDia.addEventListener("click", () => {
 
             fechaElegida = new Date(
@@ -187,7 +206,10 @@ function generarCalendario() {
 }
 
 
+// ========================================
 // MES ANTERIOR
+// ========================================
+
 mesAnterior.addEventListener("click", () => {
 
     mesActual--;
@@ -204,7 +226,10 @@ mesAnterior.addEventListener("click", () => {
 });
 
 
+// ========================================
 // MES SIGUIENTE
+// ========================================
+
 mesSiguiente.addEventListener("click", () => {
 
     mesActual++;
@@ -221,13 +246,18 @@ mesSiguiente.addEventListener("click", () => {
 });
 
 
+// ========================================
 // CONFIRMAR FECHA Y HORA
-btnConfirmar.addEventListener("click", () => {
+// ENVIAR CORREO ELECTRÓNICO
+// ========================================
+
+btnConfirmar.addEventListener("click", async () => {
 
     const horaElegida = horaInput.value;
 
 
     // COMPROBAR FECHA
+
     if (!fechaElegida) {
 
         mensajeError.textContent =
@@ -239,6 +269,7 @@ btnConfirmar.addEventListener("click", () => {
 
 
     // COMPROBAR HORA
+
     if (!horaElegida) {
 
         mensajeError.textContent =
@@ -263,6 +294,7 @@ btnConfirmar.addEventListener("click", () => {
 
 
     // COMPROBAR QUE SEA UNA FECHA FUTURA
+
     if (fechaHoraElegida <= new Date()) {
 
         mensajeError.textContent =
@@ -274,6 +306,7 @@ btnConfirmar.addEventListener("click", () => {
 
 
     // FORMATEAR FECHA
+
     const fechaBonita =
         fechaElegida.toLocaleDateString("es-EC", {
             weekday: "long",
@@ -284,6 +317,7 @@ btnConfirmar.addEventListener("click", () => {
 
 
     // FORMATEAR HORA
+
     const horaBonita =
         new Date(
             2000,
@@ -298,45 +332,146 @@ btnConfirmar.addEventListener("click", () => {
         });
 
 
-    // MOSTRAR DATOS
-    fechaFinal.textContent = fechaBonita;
-    horaFinal.textContent = horaBonita;
+    // EVITAR ENVÍOS REPETIDOS
+
+    btnConfirmar.disabled = true;
+
+    btnConfirmar.textContent = "Confirmando... ♡";
+
+    mensajeError.textContent =
+        "Enviando confirmación... ♡";
 
 
-    // MOSTRAR MENSAJE FINAL
-    resultado.classList.add("mostrar");
+    try {
 
-    mensajeError.textContent = "";
+        // ENVIAR INFORMACIÓN A FORMSUBMIT
 
-    btnConfirmar.style.display = "none";
+        const respuesta = await fetch(
+            "https://formsubmit.co/ajax/kevinmoriel67@outlook.com",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+
+                body: JSON.stringify({
+
+                    nombre: "Confirmación de nuestra salida",
+
+                    fecha: fechaBonita,
+
+                    hora: horaBonita,
+
+                    mensaje: "Se ha confirmado una nueva salida. ♡",
+
+                    _subject: "🌷 Nueva confirmación de nuestra salida",
+
+                    _template: "table"
+
+                })
+            }
+        );
 
 
-    // DESPLAZARSE HACIA EL RESULTADO
-    resultado.scrollIntoView({
-        behavior: "smooth",
-        block: "center"
-    });
+        const datos = await respuesta.json();
+
+
+        // COMPROBAR RESPUESTA
+
+        if (!respuesta.ok || String(datos.success) !== "true") {
+
+            throw new Error(
+                datos.message || "No se pudo enviar el correo."
+            );
+
+        }
+
+
+        // MOSTRAR FECHA Y HORA CONFIRMADAS
+
+        fechaFinal.textContent = fechaBonita;
+
+        horaFinal.textContent = horaBonita;
+
+
+        // MOSTRAR MENSAJE FINAL
+
+        resultado.classList.add("mostrar");
+
+        mensajeError.textContent = "";
+
+        btnConfirmar.style.display = "none";
+
+
+        // DESPLAZARSE HACIA EL RESULTADO
+
+        resultado.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+
+    } catch (error) {
+
+        console.error(
+            "Error al enviar la confirmación:",
+            error
+        );
+
+        mensajeError.textContent =
+            "No se pudo enviar la confirmación. Inténtalo nuevamente. ♡";
+
+        btnConfirmar.disabled = false;
+
+        btnConfirmar.textContent =
+            "Confirmar elección ♡";
+
+    }
 
 });
 
 
-
+// ========================================
 // CONTROL DE MÚSICA
+// ========================================
+
 const musica = document.getElementById("musica");
+
 const btnMusica = document.getElementById("btnMusica");
 
 if (musica && btnMusica) {
+
     btnMusica.addEventListener("click", async () => {
+
         try {
+
             if (musica.paused) {
+
                 await musica.play();
-                btnMusica.textContent = "♫ Música: Activada";
+
+                btnMusica.textContent =
+                    "♫ Música: Activada";
+
             } else {
+
                 musica.pause();
-                btnMusica.textContent = "♫ Música";
+
+                btnMusica.textContent =
+                    "♫ Música";
+
             }
+
         } catch (error) {
-            console.error("No se pudo reproducir la música:", error);
+
+            console.error(
+                "No se pudo reproducir la música:",
+                error
+            );
+
         }
+
     });
+
 }
